@@ -21,8 +21,7 @@ def scraping():
 
     # BeautifulSoupオブジェクト生成
     headers = {"User-Agent": "Mozilla/5.0"}
-    soup = BeautifulSoup(requests.get(
-        url, headers=headers).content, 'html.parser')
+    soup = BeautifulSoup(requests.get(url, headers=headers).content, 'html.parser')
 
     # 画像が置かれているhtmlを見つける
     # for entry in soup.find_all("div", class_="entrybody"):  # 全てのentrybodyを取得
