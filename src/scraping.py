@@ -5,9 +5,9 @@ from bs4 import BeautifulSoup
 
 
 def scraping():
-    # メンバーURL
-    member_name = "manatsu.akimoto"
-    url = "http://blog.nogizaka46.com/" + member_name + "/"
+    base_url = "https://www.nogizaka46.com"
+    member_name = "manatsu_akimoto"
+    url = base_url + "/s/n46/diary/MEMBER/list?ima=2105&ct=7639"
 
     # フォルダ作成
     if not os.path.isdir(member_name):  # ”member_name”のフォルダがない場合
@@ -21,6 +21,14 @@ def scraping():
     headers = {"User-Agent": "Mozilla/5.0"}
     soup = BeautifulSoup(requests.get(
         url, headers=headers).content, 'html.parser')
+
+    content_source = []
+    for blog_list in soup.find_all("div", class_="bl--list"):
+        for a_class in blog_list.find_all("a", class_="bl--card"):
+            content_source.append(a_class.attrs["href"])
+
+    print(content_source)
+    exit()
 
     # 画像が置かれているhtmlを見つける
     for entry in soup.find_all("div", class_="entrybody"):  # 全てのentrybodyを取得
