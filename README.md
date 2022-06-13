@@ -2,6 +2,9 @@
 
 乃木坂46と日向坂46のブログをスクレイピングする
 
+## 乃木坂４６ブログ
+https://www.nogizaka46.com/s/n46/diary/MEMBER?ima=3627
+
 ## 実行環境の構築(Docker)
 
 ```sh
